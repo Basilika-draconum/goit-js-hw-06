@@ -14,13 +14,23 @@ function callNumberForCreateBoxes() {
   createBoxes(Number(callNumber.value));
   console.log(callNumber.value);
 }
+let counter = 0;
+function incrementCounter() {
+  counter++;
+}
+function resetCounter() {
+  counter = 0;
+}
 
 function createBoxes(amount) {  
   let markupOfBoxes = '';
+  let startPixels = 30;
   for (let i = 0; i < amount; i += 1){
-    markupOfBoxes += `<div style="background-color:${getRandomHexColor()}; height:${30+i*10}px;width:${30+i*10}px;"></div>`
+    markupOfBoxes += `<div style="background-color:${getRandomHexColor()}; height:${startPixels + counter * 10}px;width:${startPixels + counter * 10}px;"></div>`
+    incrementCounter();
   }
-  return wrapperOfBoxes.innerHTML = markupOfBoxes;  
+
+  return wrapperOfBoxes.innerHTML += markupOfBoxes;
   // const createDivBoxes = Array(amount).fill(`<div> </div>`);
   // wrapperOfBoxes.append(...createDivBoxes);
 }
@@ -29,4 +39,5 @@ function destroyBoxes() {
   // for (const div of wrapperOfBoxes.children) {
   //   div.remove();}
   wrapperOfBoxes.innerHTML = '';
+  resetCounter();
 }
