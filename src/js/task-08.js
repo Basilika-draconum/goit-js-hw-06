@@ -12,6 +12,6 @@ function handleLoginFormSubmit(e) {
         outputLoginForm.email = email.value;
         outputLoginForm.password = password.value;
         console.log(outputLoginForm);
+        e.currentTarget.reset();
     }
-    e.currentTarget.reset();
 };
